@@ -27,7 +27,7 @@ class productItem extends StatelessWidget {
             onPressed: () {},
             icon: const Icon(Icons.shopping_cart),
             color: Theme.of(context).colorScheme.secondary,
-          ),
+          ),s
         ),
         child: GestureDetector(
           onTap: () {
