@@ -27,11 +27,14 @@ class productItem extends StatelessWidget {
             onPressed: () {},
             icon: const Icon(Icons.shopping_cart),
             color: Theme.of(context).colorScheme.secondary,
-          ),s
+          ),
         ),
         child: GestureDetector(
           onTap: () {
-            Navigator.of(context).pushNamed(ProductDetailScreen.rountName,arguments: id,);
+            Navigator.of(context).pushNamed(
+              ProductDetailScreen.rountName,
+              arguments: id,
+            );
           },
           child: Image.network(
             imageUrl!,
