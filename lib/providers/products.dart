@@ -1,7 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:state_8/models/product.dart';
+import 'dart:developer';
 
-class ProductS with ChangeNotifier {
+import 'package:flutter/material.dart';
+import 'package:state_8/providers/product.dart';
+
+class Products with ChangeNotifier {
   // ignore: prefer_final_fields
   List<Product> _items = [
     Product(
@@ -39,6 +41,13 @@ class ProductS with ChangeNotifier {
   ];
   List<Product> get item {
     return [..._items];
+  }
+
+  Product findById(String id) {
+    var i = _items.firstWhere((prod) => prod.id == id);
+    log('i.toString()');
+    log(i.toString());
+    return i;
   }
 
   void addProduct() {
