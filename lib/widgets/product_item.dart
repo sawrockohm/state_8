@@ -13,17 +13,24 @@ class productItem extends StatelessWidget {
   // productItem(this.id, this.title, this.imageUrl);
   @override
   Widget build(BuildContext context) {
-    // log(id.toString());
-    final product = Provider.of<Product>(context);
+    log('rebild all?');
+    final product = Provider.of<Product>(context, listen: false);
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: GridTile(
         footer: GridTileBar(
           backgroundColor: Colors.black87,
-          leading: IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.favorite),
-            color: Theme.of(context).colorScheme.secondary,
+          leading: Consumer<Product>(
+            builder: (ctx, product, _) => IconButton(
+              onPressed: () {
+                log('rebild in?');
+
+                product.toggleFevoriteStatus();
+              },
+              icon: Icon(
+                  product.isFavorite ? Icons.favorite : Icons.favorite_border),
+              color: Theme.of(context).colorScheme.secondary,
+            ),
           ),
           title: Text(
             product.title!,
