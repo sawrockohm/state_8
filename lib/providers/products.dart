@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:state_8/providers/product.dart';
+import 'package:state_8/models/product.dart';
 
 class Products with ChangeNotifier {
   // ignore: prefer_final_fields
@@ -39,14 +39,36 @@ class Products with ChangeNotifier {
           'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Cast-Iron-Pan.jpg/1024px-Cast-Iron-Pan.jpg',
     ),
   ];
+  // var _showFavoritesOnly = false;
+
   List<Product> get item {
+    log('get item');
+    // if (_showFavoritesOnly) {
+    //   return _items.where((element) => element.isFavorite).toList();
+    // }
     return [..._items];
   }
 
+  List<Product> get favoriteItem {
+    return _items.where((element) => element.isFavorite).toList();
+  }
+  // void showFavoritesOnly() {
+  //   _showFavoritesOnly = true;
+  //   notifyListeners();
+  // }
+
+  // void showFavoritesAll() {
+  //   _showFavoritesOnly = false;
+  //   notifyListeners();
+  // }
+
   Product findById(String id) {
+    log('findById');
+    log(id);
+    // id = 'p1';
     var i = _items.firstWhere((prod) => prod.id == id);
     log('i.toString()');
-    log(i.toString());
+    log(i.id.toString());
     return i;
   }
 

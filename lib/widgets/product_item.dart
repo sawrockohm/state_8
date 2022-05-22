@@ -2,8 +2,9 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:state_8/providers/product.dart';
+import 'package:state_8/models/product.dart';
 
+import '../providers/cart.dart';
 import '../screens/product_detail.dart';
 
 class productItem extends StatelessWidget {
@@ -15,6 +16,8 @@ class productItem extends StatelessWidget {
   Widget build(BuildContext context) {
     log('rebild all?');
     final product = Provider.of<Product>(context, listen: false);
+    final cart = Provider.of<Cart>(context, listen: false);
+
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: GridTile(
@@ -37,7 +40,9 @@ class productItem extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           trailing: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              cart.addItem(product.id!, product.price!, product.title!);
+            },
             icon: const Icon(Icons.shopping_cart),
             color: Theme.of(context).colorScheme.secondary,
           ),
