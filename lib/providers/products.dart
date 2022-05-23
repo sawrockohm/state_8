@@ -64,7 +64,7 @@ class Products with ChangeNotifier {
 
   Product findById(String id) {
     log('findById');
-    log(id);
+    // log(id);
     // id = 'p1';
     var i = _items.firstWhere((prod) => prod.id == id);
     log('i.toString()');

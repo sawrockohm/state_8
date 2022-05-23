@@ -1,5 +1,4 @@
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:state_8/models/cart_model.dart';
@@ -46,5 +45,15 @@ class Cart with ChangeNotifier {
       total += value.price! * value.quantity!;
     });
     return total;
+  }
+
+  void removeItem(String pId) {
+    _items.remove(pId);
+    notifyListeners();
+  }
+
+  void clear() {
+    _items = {};
+    notifyListeners();
   }
 }
