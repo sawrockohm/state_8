@@ -8,5 +8,4 @@ class CartItem {
       required this.title,
       required this.quantity,
       required this.price});
-      
 }
