@@ -21,22 +21,26 @@ class Badge extends StatelessWidget {
         Positioned(
           right: 8,
           top: 8,
-          child: Container(
-            padding: const EdgeInsets.all(2.0),
-            // color: Theme.of(context).accentColor,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10.0),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Container(
               color: Colors.red,
-            ),
-            constraints: const BoxConstraints(
-              minWidth: 16,
-              minHeight: 16,
-            ),
-            child: Text(
-              value!,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 10,
+              padding: const EdgeInsets.all(2.0),
+              // color: Theme.of(context).accentColor,
+              // decoration: BoxDecoration(
+              //   borderRadius: BorderRadius.circular(10.0),
+              //   color: Colors.red,
+              // ),
+              constraints: const BoxConstraints(
+                minWidth: 16,
+                minHeight: 16,
+              ),
+              child: Text(
+                value!,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 10,
+                ),
               ),
             ),
           ),

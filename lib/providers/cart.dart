@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
@@ -12,6 +13,7 @@ class Cart with ChangeNotifier {
 
   void addItem(String pId, double price, String title) {
     if (_items.containsKey(pId)) {
+      log('containsKey');
       _items.update(
           pId,
           (value) => CartItem(
@@ -20,6 +22,7 @@ class Cart with ChangeNotifier {
               quantity: value.quantity! + 1,
               price: value.price));
     } else {
+      log('putIfAbsent');
       _items.putIfAbsent(
         pId,
         () => CartItem(
@@ -33,6 +36,15 @@ class Cart with ChangeNotifier {
   }
 
   int get itemCount {
+    // log(_items['p2']!.quantity.toString());
     return _items.length;
+  }
+
+  double get totalAmount {
+    double total = 0;
+    _items.forEach((key, value) {
+      total += value.price! * value.quantity!;
+    });
+    return total;
   }
 }

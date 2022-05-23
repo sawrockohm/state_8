@@ -6,6 +6,7 @@ import 'package:state_8/models/product.dart';
 import 'package:state_8/providers/cart.dart';
 
 import 'package:state_8/providers/products.dart';
+import 'package:state_8/screens/cart_screen.dart';
 import 'package:state_8/widgets/badge.dart';
 import '../widgets/product_grid.dart';
 
@@ -52,9 +53,12 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
                   ]),
           Consumer<Cart>(
             builder: (_, value, ch) =>
-                Badge(child: ch, value: value.itemCount.toString()),
-            child:
-                IconButton(onPressed: () {}, icon: Icon(Icons.shopping_cart)),
+                Badge(value: value.itemCount.toString(), child: ch),
+            child: IconButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed(CartScreen.rountName);
+                },
+                icon: const Icon(Icons.shopping_cart)),
           )
         ],
       ),

@@ -27,7 +27,6 @@ class productItem extends StatelessWidget {
             builder: (ctx, product, _) => IconButton(
               onPressed: () {
                 log('rebild in?');
-
                 product.toggleFevoriteStatus();
               },
               icon: Icon(
