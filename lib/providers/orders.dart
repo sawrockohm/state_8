@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:state_8/models/cart_model.dart';
 import 'package:state_8/models/order_moder.dart';
@@ -10,6 +12,7 @@ class Orders with ChangeNotifier {
   }
 
   void addOrder(List<CartItem> cartProducts, double total) {
+    log('message');
     _order.insert(
         0,
         OrderItem(

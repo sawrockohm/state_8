@@ -19,9 +19,9 @@ class _OrderItemWState extends State<OrderItemW> {
       margin: const EdgeInsets.all(10),
       child: Column(children: [
         ListTile(
-          title: Text('\$${widget.order.amount.toStringAsFixed(2)}'),
+          title: Text('\$${widget.order.amount!.toStringAsFixed(2)}'),
           subtitle: Text(
-              DateFormat('dd/MM/yyyy hh:mm').format(widget.order.dateTime)),
+              DateFormat('dd/MM/yyyy hh:mm').format(widget.order.dateTime!)),
           trailing: IconButton(
             icon: Icon(_expanded ? Icons.expand_less : Icons.expand_more),
             onPressed: () {
@@ -34,9 +34,9 @@ class _OrderItemWState extends State<OrderItemW> {
         if (_expanded)
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
-            height: min(widget.order.product.length * 20 + 30, 180),
+            height: min(widget.order.product!.length * 20 + 30, 180),
             child: ListView(
-              children: widget.order.product
+              children: widget.order.product!
                   .map((value) => Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
